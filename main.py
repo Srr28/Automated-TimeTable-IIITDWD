@@ -16,7 +16,7 @@ from pathlib import Path
 """
 
 BASE_DIR = Path(__file__).resolve().parent
-INPUT_DIR = BASE_DIR / 'inputs'
+INPUT_DIR = BASE_DIR / 'input'
 OUTPUT_DIR = BASE_DIR / 'outputs'
 
 # Grid configuration covering a five-day work week with 15-minute slots.
