@@ -101,21 +101,28 @@ Automated-TimeTable-IIITDWD/
 
 2. **Create and activate a virtual environment** *(recommended)*
 
+   **Windows**
    ```bash
-   # Create
    python -m venv venv
-
-   # Activate — Windows
    venv\Scripts\activate
+   ```
 
-   # Activate — macOS / Linux
+   **macOS / Linux**
+   ```bash
+   python3 -m venv venv
    source venv/bin/activate
    ```
 
 3. **Install dependencies**
 
+   **Windows**
    ```bash
    pip install -r requirements.txt
+   ```
+
+   **macOS / Linux**
+   ```bash
+   pip3 install -r requirements.txt
    ```
 
 ---
@@ -153,8 +160,14 @@ Automated-TimeTable-IIITDWD/
 
 ## Usage
 
+**Windows**
 ```bash
 python main.py
+```
+
+**macOS / Linux**
+```bash
+python3 main.py
 ```
 
 The program will:
