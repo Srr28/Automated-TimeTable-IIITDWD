@@ -61,10 +61,11 @@ Built specifically for **IIIT Dharwad**, the system handles real-world complexit
 ```
 Automated-TimeTable-IIITDWD/
 ├── main.py                          # Core scheduling engine (single-file)
-├── input/
+├── requirements.txt                 # Python dependencies
+├── inputs/
 │   ├── courses.xlsx                 # Course catalog with L/T/P hours, faculty, sharing info
 │   └── rooms.xlsx                   # Room definitions with capacity and type
-├── output/
+├── outputs/
 │   ├── department_timetables/       # Per department-semester Excel files
 │   │   ├── CSEA_1.xlsx
 │   │   ├── DSAI_3.xlsx
@@ -98,17 +99,30 @@ Automated-TimeTable-IIITDWD/
    cd Automated-TimeTable-IIITDWD
    ```
 
-2. **Install dependencies**
+2. **Create and activate a virtual environment** *(recommended)*
 
    ```bash
-   pip install pandas openpyxl
+   # Create
+   python -m venv venv
+
+   # Activate — Windows
+   venv\Scripts\activate
+
+   # Activate — macOS / Linux
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
    ```
 
 ---
 
 ## Input Format
 
-### `input/courses.xlsx`
+### `inputs/courses.xlsx`
 
 | Column | Description | Example |
 |---|---|---|
@@ -127,7 +141,7 @@ Automated-TimeTable-IIITDWD/
 | `Basket` | Basket elective group code | `BSK1` |
 | `Schedule or Not` | Whether to include in scheduling | `Yes` |
 
-### `input/rooms.xlsx`
+### `inputs/rooms.xlsx`
 
 | Column | Description | Example |
 |---|---|---|
@@ -145,13 +159,13 @@ python main.py
 
 The program will:
 
-1. Load course and room data from `input/`
+1. Load course and room data from `inputs/`
 2. Preprocess courses into schedulable Lecture, Tutorial, and Practical events
 3. Build logical blocks (honoring cross-department shared courses)
 4. Extract and prioritize basket elective bundles
 5. Schedule baskets first, then remaining blocks
 6. Run up to 3 retry passes for any unscheduled blocks
-7. Export all timetables to `output/`
+7. Export all timetables to `outputs/`
 
 ### Sample Console Output
 
@@ -173,21 +187,21 @@ Done.
 
 ## Output
 
-### Department Timetables (`output/department_timetables/`)
+### Department Timetables (`outputs/department_timetables/`)
 
 Each file (e.g., `CSEA_3.xlsx`) contains:
 - **Timetable sheet** — A weekly grid (Mon–Fri, 09:00–18:30) with color-coded, merged cells showing course code, name, faculty, and room
 - **Baskets sheet** — A summary of basket elective groupings with course and room details
 
-### Faculty Timetables (`output/faculty_timetables/`)
+### Faculty Timetables (`outputs/faculty_timetables/`)
 
 One file per instructor showing their complete weekly teaching schedule across all departments.
 
-### Room Timetables (`output/room_timetables/`)
+### Room Timetables (`outputs/room_timetables/`)
 
 One file per room/lab showing occupancy across the week — useful for room utilization analysis.
 
-### Unscheduled Report (`output/unscheduled_blocks.xlsx`)
+### Unscheduled Report (`outputs/unscheduled_blocks.xlsx`)
 
 If any blocks couldn't be placed, this file lists them with:
 - Block ID, type, duration, student count
