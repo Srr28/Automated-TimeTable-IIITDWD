@@ -37,6 +37,18 @@ Built specifically for **IIIT Dharwad**, the system handles real-world complexit
 
 ---
 
+## Team
+
+**Team Name:** Debug and Design
+
+**Members:**
+- Sama Ruthveek Reddy
+- Siddhant Kumar
+- Ravva Swati
+- Yashas
+
+---
+
 ## Features
 
 | Category | Details |
@@ -288,7 +300,7 @@ LUNCH_START = 12.0      # Lunch window start
 LUNCH_END = 14.0        # Lunch window end
 MIN_LUNCH_BREAK = 1.0   # Minimum free time during lunch (hours)
 
-# Institute-level reserved windows (e.g., club hours)
+# Institute-level reserved windows (e.g., club hours, meetings)
 RESERVED_WINDOWS = {
     # 'Monday': [(9.0, 10.0)],
     # 'Friday': [(15.0, 16.0)],
